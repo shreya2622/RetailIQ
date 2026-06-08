@@ -1,0 +1,37 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Credentials and environment files
+.env
+*.env
+
+# Data files (too large for GitHub)
+data/
+
+# dbt credentials (contains your Snowflake password)
+retailiq_dbt/logs/
+retailiq_dbt/target/
+retailiq_dbt/.user.yml
+
+# MLflow database
+mlflow.db
+mlruns/
+
+# Model artifacts (large files)
+ml/artifacts/
+
+# Logs
+logs/
+
+# macOS system files
+.DS_Store
+
+# VS Code
+.vscode/
