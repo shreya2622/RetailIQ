@@ -49,6 +49,17 @@ predictions through a Dockerized FastAPI service with a Streamlit executive dash
 2. `avg_order_value` — average spend per order
 3. `monetary_value` — total customer lifetime spend
 
+## Screenshots
+
+### Executive Dashboard
+![Dashboard KPIs](screenshots/kpis.png)
+
+### Churn Rate by State
+![Churn by State](screenshots/churn_by_state.png)
+
+### Live Prediction Widget
+![Prediction Widget](screenshots/prediction_widget.png)
+
 
 ## API Usage
 
