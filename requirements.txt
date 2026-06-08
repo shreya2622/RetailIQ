@@ -8,3 +8,8 @@ shap
 pandas
 numpy
 joblib
+streamlit
+plotly
+snowflake-connector-python
+requests
+python-dotenv
