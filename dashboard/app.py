@@ -14,18 +14,18 @@ st.title("RetailIQ — Customer Intelligence & Churn Analytics")
 
 @st.cache_data
 def load_data():
-   conn = snowflake.connector.connect(
-        user=os.environ.get('SNOWFLAKE_USER'),
-        password=os.environ.get('SNOWFLAKE_PASSWORD'),
-        account=os.environ.get('SNOWFLAKE_ACCOUNT'),
+    conn = snowflake.connector.connect(
+        user=st.secrets["SNOWFLAKE_USER"],
+        password=st.secrets["SNOWFLAKE_PASSWORD"],
+        account=st.secrets["SNOWFLAKE_ACCOUNT"],
         warehouse='RETAILIQ_WH',
         database='RETAILIQ',
         schema='STAGING'
     )
-   df = pd.read_sql("SELECT * FROM rfm_features", conn)
-   df.columns = df.columns.str.lower()
-   conn.close()
-   return df
+    df = pd.read_sql("SELECT * FROM rfm_features", conn)
+    df.columns = df.columns.str.lower()
+    conn.close()
+    return df
 
 df = load_data()
 
