@@ -5,24 +5,27 @@ import plotly.graph_objects as go
 import snowflake.connector
 import requests
 import joblib
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 st.set_page_config(page_title="RetailIQ Dashboard", layout="wide")
 st.title("RetailIQ — Customer Intelligence & Churn Analytics")
 
 @st.cache_data
 def load_data():
-    conn = snowflake.connector.connect(
-        user='SHREYAP',
-        password='GunniShinu@1997',
-        account='pvbpypn-cl36404',
+   conn = snowflake.connector.connect(
+        user=os.environ.get('SNOWFLAKE_USER'),
+        password=os.environ.get('SNOWFLAKE_PASSWORD'),
+        account=os.environ.get('SNOWFLAKE_ACCOUNT'),
         warehouse='RETAILIQ_WH',
         database='RETAILIQ',
         schema='STAGING'
     )
-    df = pd.read_sql("SELECT * FROM rfm_features", conn)
-    df.columns = df.columns.str.lower()
-    conn.close()
-    return df
+   df = pd.read_sql("SELECT * FROM rfm_features", conn)
+   df.columns = df.columns.str.lower()
+   conn.close()
+   return df
 
 df = load_data()
 

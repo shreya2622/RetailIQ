@@ -1,14 +1,16 @@
 import snowflake.connector
 import pandas as pd
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 conn = snowflake.connector.connect(
-    user='SHREYAP',
-    password='GunniShinu@1997',
-    account='pvbpypn-cl36404',
+    user=os.environ.get('SNOWFLAKE_USER'),
+    password=os.environ.get('SNOWFLAKE_PASSWORD'),
+    account=os.environ.get('SNOWFLAKE_ACCOUNT'),
     warehouse='RETAILIQ_WH',
     database='RETAILIQ',
-    schema='RAW'
+    schema='STAGING'
 )
 
 cursor = conn.cursor()
